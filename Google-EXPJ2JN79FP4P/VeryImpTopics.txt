@@ -1,0 +1,6 @@
+Prefix Sum
+Line sweep - You are given a struct Block in C++ that represents the time during which a person is busy, 
+with attributes: personId, startTime, and endTime. 
+You are also given an integer totalTime which represents the total duration. The task is to find the time intervals during which all the persons are free.
+
+Union Find Rollback

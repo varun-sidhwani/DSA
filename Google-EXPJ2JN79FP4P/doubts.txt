@@ -1,0 +1,57 @@
+https://leetcode.com/discuss/interview-question/6176471/Google-L4-phone-interview
+
+
+https://leetcode.com/discuss/interview-question/6157196/Google-L4-interview-experience.-Verdict%3A-Reject.
+Given an array of integers representing the height of fences and 
+a paint brush able to make horizontal and vertical strokes. 
+1 stroke is counted as not lifting the brush from the fence. 
+Find the minimum number of strokes to paint the fence.
+
+
+The first question was related to graphs and DP, 
+involving a matrix where water starts falling from each point, 
+and the task was to find the point where the water would get stored. 
+I applied DFS and DP, and the implementation was quite extensive, 
+taking around 15 minutes to complete.
+
+
+d to find pivot elements in an array containing duplicates
+
+
+
+https://leetcode.com/discuss/interview-question/4820505/Google-question/
+
+https://leetcode.com/discuss/interview-question/5031296/Google-or-Technical-Phone-Screen-Round-or-2024
+
+https://leetcode.com/discuss/interview-question/4422524/Google-Onsite-interview/2174916
+
+
+https://leetcode.com/discuss/interview-question/4955737/Google-phone-screen-question
+
+https://leetcode.com/problems/maximum-number-of-points-with-cost/description/
+
+
+LRU LFU Cache
+
+https://leetcode.com/discuss/interview-question/4835565/Google-or-Phone-Interview-or-Banglore-oror-SDE-III-oror-Android-(732024)
+
+intervals - line sweep
+
+Reservoir Sampling - Choosing random with equal probability;
+497. Random Point in Non-overlapping Rectangles
+https://leetcode.com/discuss/interview-question/5804713/Google-or-L4-or-Bangalore-or-Rejected
+
+
+
+BFS number of unique edges
+https://leetcode.com/discuss/interview-question/5748871/
+
+K window of a list = distinct elements in the first K elements
+Given 2 lists, modify list2 such that the k windows of the 2 lists don't have any common element. Return the new list (Asked to optimize the space multiple times).
+
+
+Variation:
+Instead of 2 lists we have n lists, and a distance parameter d, the k window of a list shouldn't have any common element with any of the previous 'd' lists. Return the new lists
+
+
+https://leetcode.com/problems/range-module/description/

@@ -1,0 +1,138 @@
+
+
+// Normal backtracking with pruning
+
+void backtrack(const vector<int>& votesPower, const vector<string>& states, 
+               int index, vector<string>& group1, vector<string>& group2, 
+               int sum1, int sum2, int target, set<pair<vector<string>, vector<string>>>& result) {
+    // Base case: All states are considered
+    if (index == votesPower.size()) {
+        if (sum1 == sum2) {
+            vector<string> sortedGroup1 = group1, sortedGroup2 = group2;
+            sort(sortedGroup1.begin(), sortedGroup1.end());
+            sort(sortedGroup2.begin(), sortedGroup2.end());
+            if (sortedGroup1 < sortedGroup2) {
+                result.insert({sortedGroup1, sortedGroup2});
+            } else {
+                result.insert({sortedGroup2, sortedGroup1});
+            }
+        }
+        return;
+    }
+
+    // Prune if the current sum exceeds the target
+    if (sum1 > target || sum2 > target) {
+        return;
+    }
+
+    // Include the current state in group1
+    group1.push_back(states[index]);
+    backtrack(votesPower, states, index + 1, group1, group2, sum1 + votesPower[index], sum2, target, result);
+    group1.pop_back();
+
+    // Include the current state in group2
+    group2.push_back(states[index]);
+    backtrack(votesPower, states, index + 1, group1, group2, sum1, sum2 + votesPower[index], target, result);
+    group2.pop_back();
+}
+
+
+
+
+// constructing path after memoization
+
+#include <iostream>
+#include <vector>
+#include <string>
+#include <unordered_map>
+#include <algorithm>
+using namespace std;
+
+bool canPartition(int index, int sum1, int target, const vector<int>& votesPower, 
+                  unordered_map<string, bool>& memo) {
+    // Base case: if both groups have the same sum
+    if (sum1 == target) return true;
+
+    // Base case: if we've gone through all states or exceeded the target
+    if (index >= votesPower.size() || sum1 > target) return false;
+
+    // Memoization key
+    string key = to_string(index) + ":" + to_string(sum1);
+
+    // Check memo
+    if (memo.find(key) != memo.end()) return memo[key];
+
+    // Recursive cases: include the current state in group1 or skip it
+    bool include = canPartition(index + 1, sum1 + votesPower[index], target, votesPower, memo);
+    bool exclude = canPartition(index + 1, sum1, target, votesPower, memo);
+
+    // Store result in memo
+    return memo[key] = include || exclude;
+}
+
+void reconstructResults(int index, int sum1, int target, const vector<int>& votesPower, 
+                        const vector<string>& states, vector<string>& group1, vector<string>& group2, 
+                        unordered_map<string, bool>& memo) {
+    // Base case: reconstruction is complete
+    if (index >= votesPower.size()) return;
+
+    string key = to_string(index) + ":" + to_string(sum1);
+
+    // Check if including the current state in group1 is valid
+    if (sum1 + votesPower[index] <= target && memo[to_string(index + 1) + ":" + to_string(sum1 + votesPower[index])]) {
+        group1.push_back(states[index]);
+        reconstructResults(index + 1, sum1 + votesPower[index], target, votesPower, states, group1, group2, memo);
+    } else {
+        // Otherwise, include the current state in group2
+        group2.push_back(states[index]);
+        reconstructResults(index + 1, sum1, target, votesPower, states, group1, group2, memo);
+    }
+}
+
+vector<pair<vector<string>, vector<string>>> findEqualVotePartitions(vector<int> votesPower, vector<string> states) {
+    int totalSum = 0;
+    for (int votes : votesPower) {
+        totalSum += votes;
+    }
+
+    // If the total sum is odd, it's impossible to partition equally
+    if (totalSum % 2 != 0) {
+        return {};
+    }
+
+    int target = totalSum / 2;
+    unordered_map<string, bool> memo;
+
+    // Check if partitioning is possible
+    if (!canPartition(0, 0, target, votesPower, memo)) {
+        return {};
+    }
+
+    // Reconstruct the result
+    vector<string> group1, group2;
+    reconstructResults(0, 0, target, votesPower, states, group1, group2, memo);
+
+    return {{group1, group2}};
+}
+
+int main() {
+    vector<int> votesPower = {1, 5, 7, 8, 9, 10, 20};
+    vector<string> states = {"California", "Texas", "Florida", "Indiana", "Alaska", "Ohio", "Hawaii"};
+
+    vector<pair<vector<string>, vector<string>>> partitions = findEqualVotePartitions(votesPower, states);
+
+    // Print the result
+    for (const auto& partition : partitions) {
+        cout << "[";
+        for (const auto& state : partition.first) {
+            cout << state << " ";
+        }
+        cout << "] [";
+        for (const auto& state : partition.second) {
+            cout << state << " ";
+        }
+        cout << "]" << endl;
+    }
+
+    return 0;
+}

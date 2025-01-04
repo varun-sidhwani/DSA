@@ -1,0 +1,14 @@
+Given a set of jobs array and max number of cpus, where each job object contains 3 props {starttime,duration,numberofCpusNeeded}, write a function which returns true if the jobs can be executed with the given max cpus else return false even if one job can't be executed?
+
+task scheduler
+
+Reservoir Sampling - Choosing random with equal probability;
+497. Random Point in Non-overlapping Rectangles - https://leetcode.com/problems/random-point-in-non-overlapping-rectangles/description/
+
+
+Text Justification 
+Phone Screen: The question was similar to the "Text Justification" problem on LeetCode. 
+There was a follow-up involving Binary Search. 
+
+
+for bitmasking, refer to parallel courses 2 question.
