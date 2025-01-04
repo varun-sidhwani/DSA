@@ -1,0 +1,24 @@
+https://leetcode.com/problems/lfu-cache/description/
+
+Round 1 of - https://leetcode.com/discuss/interview-question/6034301/Google-Onsite-Reject
+
+https://leetcode.com/problems/escape-a-large-maze/description/
+https://leetcode.com/discuss/interview-question/6020919/Google-or-Onsite-round-1-or-L3
+
+https://leetcode.com/discuss/interview-question/5963260/Google-India-Interview-Experience-or-L4-or-phone-screen-or-onsite-or-reject
+Round 1
+Round 3 kosaraju
+
+
+Segment Tree approach of - https://leetcode.com/problems/longest-increasing-subsequence-ii/description/
+
+
+
+
+
+
+
+Meh Todos
+
+https://leetcode.com/problems/number-of-ways-to-build-sturdy-brick-wall/description/
+https://leetcode.com/discuss/interview-question/1349302/Google-or-Phone-interview-or-Crossword-search
